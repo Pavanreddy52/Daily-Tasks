@@ -1,0 +1,22 @@
+
+
+
+.container {
+  padding: 20px;
+  font-family: Arial;
+}
+
+.product {
+  border: 1px solid gray;
+  padding: 10px;
+  margin: 10px;
+  width: 250px;
+}
+
+button {
+  padding: 6px 12px;
+  background: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
