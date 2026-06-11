@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pricing Comparison Table</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f7fb;
+      padding: 50px 20px;
+    }
+
+    .pricing-section {
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .pricing-section h1 {
+      margin-bottom: 40px;
+      color: #222;
+      font-size: 2.5rem;
+    }
+
+    .pricing-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .pricing-card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 35px 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    /* Hover Effect */
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .pricing-card h2 {
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .price {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+
+    .price span {
+      font-size: 1rem;
+      color: #666;
+    }
+
+    .features {
+      list-style: none;
+      margin-bottom: 30px;
+    }
+
+    .features li {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      color: #555;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      background: #007bff;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #0056b3;
+    }
+
+    /* Highlight Recommended Plan */
+    .recommended {
+      border: 3px solid #007bff;
+      transform: scale(1.05);
+    }
+
+    .recommended-badge {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: #007bff;
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .pricing-section h1 {
+        font-size: 2rem;
+      }
+
+      .recommended {
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="pricing-section">
+    <h1>Our Pricing Plans</h1>
+
+    <div class="pricing-container">
+
+      <!-- Basic Plan -->
+      <div class="pricing-card">
+        <h2>Basic</h2>
+        <div class="price">$9<span>/month</span></div>
+
+        <ul class="features">
+          <li>1 Website</li>
+          <li>10 GB Storage</li>
+          <li>Email Support</li>
+          <li>Basic Analytics</li>
+        </ul>
+
+        <a href="#" class="btn">Subscribe</a>
+      </div>
+
+      <!-- Standard Plan -->
+      <div class="pricing-card recommended">
+        <div class="recommended-badge">Recommended</div>
+
+        <h2>Standard</h2>
+        <div class="price">$29<span>/month</span></div>
+
+        <ul class="features">
+          <li>5 Websites</li>
+          <li>50 GB Storage</li>
+          <li>Priority Support</li>
+          <li>Advanced Analytics</li>
+        </ul>
+
+        <a href="#" class="btn">Subscribe</a>
+      </div>
+
+      <!-- Premium Plan -->
+      <div class="pricing-card">
+        <h2>Premium</h2>
+        <div class="price">$59<span>/month</span></div>
+
+        <ul class="features">
+          <li>Unlimited Websites</li>
+          <li>200 GB Storage</li>
+          <li>24/7 Support</li>
+          <li>Custom Reports</li>
+        </ul>
+
+        <a href="#" class="btn">Subscribe</a>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>
