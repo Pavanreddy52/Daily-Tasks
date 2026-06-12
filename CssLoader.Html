@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CSS Loader Animations</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      min-height:100vh;
+      background:#f4f7fb;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:40px 20px;
+    }
+
+    .container{
+      width:100%;
+      max-width:1100px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .loader-card{
+      background:#fff;
+      border-radius:16px;
+      padding:40px 20px;
+      text-align:center;
+      box-shadow:0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    .loader-card h2{
+      margin-bottom:35px;
+      color:#333;
+    }
+
+    /* =================================
+       Loader 1 → Spinner
+    ================================= */
+
+    .spinner{
+      width:70px;
+      height:70px;
+      border:8px solid #dbe6ff;
+      border-top:8px solid #007bff;
+      border-radius:50%;
+      margin:auto;
+      animation:spin 1s linear infinite;
+    }
+
+    @keyframes spin{
+      100%{
+        transform:rotate(360deg);
+      }
+    }
+
+    /* =================================
+       Loader 2 → Bouncing Dots
+    ================================= */
+
+    .dots{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+    }
+
+    .dots span{
+      width:16px;
+      height:16px;
+      background:#007bff;
+      border-radius:50%;
+      animation:bounce 0.6s infinite alternate;
+    }
+
+    .dots span:nth-child(2){
+      animation-delay:0.2s;
+    }
+
+    .dots span:nth-child(3){
+      animation-delay:0.4s;
+    }
+
+    @keyframes bounce{
+      to{
+        transform:translateY(-15px);
+        opacity:0.5;
+      }
+    }
+
+    /* =================================
+       Loader 3 → Pulse Ring
+    ================================= */
+
+    .pulse-loader{
+      width:70px;
+      height:70px;
+      border-radius:50%;
+      position:relative;
+      margin:auto;
+    }
+
+    .pulse-loader::before,
+    .pulse-loader::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:50%;
+      border:5px solid #007bff;
+      animation:pulse 1.5s linear infinite;
+    }
+
+    .pulse-loader::after{
+      animation-delay:0.75s;
+    }
+
+    @keyframes pulse{
+      0%{
+        transform:scale(0.3);
+        opacity:1;
+      }
+
+      100%{
+        transform:scale(1.5);
+        opacity:0;
+      }
+    }
+
+    /* Responsive */
+    @media(max-width:768px){
+      .loader-card{
+        padding:30px 15px;
+      }
+
+      .loader-card h2{
+        font-size:1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Loader 1 -->
+    <div class="loader-card">
+      <h2>Spinner Loader</h2>
+      <div class="spinner"></div>
+    </div>
+
+    <!-- Loader 2 -->
+    <div class="loader-card">
+      <h2>Bouncing Dots</h2>
+
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <!-- Loader 3 -->
+    <div class="loader-card">
+      <h2>Pulse Ring</h2>
+      <div class="pulse-loader"></div>
+    </div>
+
+  </div>
+
+</body>
+</html>

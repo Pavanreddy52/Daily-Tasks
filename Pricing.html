@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Pricing Toggle</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:#f4f7fb;
+      padding:50px 20px;
+      color:#333;
+    }
+
+    .pricing-section{
+      max-width:1200px;
+      margin:auto;
+      text-align:center;
+    }
+
+    .pricing-section h1{
+      font-size:2.5rem;
+      margin-bottom:30px;
+    }
+
+    /* Toggle */
+    .toggle-wrapper{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:15px;
+      margin-bottom:50px;
+      font-weight:600;
+    }
+
+    .switch{
+      position:relative;
+      width:70px;
+      height:36px;
+    }
+
+    .switch input{
+      opacity:0;
+      width:0;
+      height:0;
+    }
+
+    .slider{
+      position:absolute;
+      inset:0;
+      background:#ccc;
+      border-radius:50px;
+      cursor:pointer;
+      transition:0.4s;
+    }
+
+    .slider::before{
+      content:"";
+      position:absolute;
+      width:28px;
+      height:28px;
+      left:4px;
+      top:4px;
+      background:white;
+      border-radius:50%;
+      transition:0.4s;
+    }
+
+    input:checked + .slider{
+      background:#007bff;
+    }
+
+    input:checked + .slider::before{
+      transform:translateX(34px);
+    }
+
+    /* Pricing Cards */
+    .pricing-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+      gap:25px;
+    }
+
+    .card{
+      background:#fff;
+      border-radius:18px;
+      padding:35px 25px;
+      box-shadow:0 5px 18px rgba(0,0,0,0.08);
+      transition:0.3s ease;
+      position:relative;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 12px 25px rgba(0,0,0,0.15);
+    }
+
+    .card h2{
+      margin-bottom:15px;
+      font-size:1.7rem;
+    }
+
+    .price{
+      font-size:3rem;
+      font-weight:bold;
+      color:#007bff;
+      margin:20px 0;
+      transition:all 0.4s ease;
+    }
+
+    .price span{
+      font-size:1rem;
+      color:#666;
+    }
+
+    .features{
+      list-style:none;
+      margin:25px 0;
+    }
+
+    .features li{
+      padding:10px 0;
+      border-bottom:1px solid #eee;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:12px 28px;
+      background:#007bff;
+      color:#fff;
+      border-radius:30px;
+      text-decoration:none;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      background:#0056c7;
+    }
+
+    /* Recommended Plan */
+    .recommended{
+      border:3px solid #007bff;
+      transform:scale(1.05);
+    }
+
+    .badge{
+      position:absolute;
+      top:-14px;
+      right:20px;
+      background:#007bff;
+      color:#fff;
+      padding:7px 16px;
+      border-radius:20px;
+      font-size:0.85rem;
+      font-weight:bold;
+    }
+
+    /* Responsive */
+    @media(max-width:768px){
+      .pricing-section h1{
+        font-size:2rem;
+      }
+
+      .recommended{
+        transform:scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="pricing-section">
+
+    <h1>Choose Your Plan</h1>
+
+    <!-- Toggle -->
+    <div class="toggle-wrapper">
+      <span>Monthly</span>
+
+      <label class="switch">
+        <input type="checkbox" id="billingToggle">
+        <span class="slider"></span>
+      </label>
+
+      <span>Yearly</span>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="pricing-container">
+
+      <!-- Basic -->
+      <div class="card">
+        <h2>Basic</h2>
+
+        <div class="price"
+             data-monthly="$9"
+             data-yearly="$90">
+          $9<span>/month</span>
+        </div>
+
+        <ul class="features">
+          <li>1 Website</li>
+          <li>10GB Storage</li>
+          <li>Email Support</li>
+          <li>Basic Analytics</li>
+        </ul>
+
+        <a href="#" class="btn">Get Started</a>
+      </div>
+
+      <!-- Standard -->
+      <div class="card recommended">
+        <div class="badge">Recommended</div>
+
+        <h2>Standard</h2>
+
+        <div class="price"
+             data-monthly="$29"
+             data-yearly="$290">
+          $29<span>/month</span>
+        </div>
+
+        <ul class="features">
+          <li>5 Websites</li>
+          <li>50GB Storage</li>
+          <li>Priority Support</li>
+          <li>Advanced Analytics</li>
+        </ul>
+
+        <a href="#" class="btn">Get Started</a>
+      </div>
+
+      <!-- Premium -->
+      <div class="card">
+        <h2>Premium</h2>
+
+        <div class="price"
+             data-monthly="$59"
+             data-yearly="$590">
+          $59<span>/month</span>
+        </div>
+
+        <ul class="features">
+          <li>Unlimited Websites</li>
+          <li>200GB Storage</li>
+          <li>24/7 Support</li>
+          <li>Custom Reports</li>
+        </ul>
+
+        <a href="#" class="btn">Get Started</a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <script>
+    const toggle = document.getElementById("billingToggle");
+    const prices = document.querySelectorAll(".price");
+
+    toggle.addEventListener("change", () => {
+
+      prices.forEach(price => {
+
+        price.style.opacity = "0";
+
+        setTimeout(() => {
+
+          if(toggle.checked){
+            price.innerHTML =
+              `${price.dataset.yearly}<span>/year</span>`;
+          } else {
+            price.innerHTML =
+              `${price.dataset.monthly}<span>/month</span>`;
+          }
+
+          price.style.opacity = "1";
+
+        }, 200);
+
+      });
+
+    });
+  </script>
+
+</body>
+</html>
